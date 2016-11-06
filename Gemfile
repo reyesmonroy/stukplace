@@ -51,6 +51,13 @@ gem 'devise'
 gem 'gravatarify', '~> 3.0.0'
 
 
+# Use geocoder for locations
+gem 'geocoder'
+
+# Use for storing api keys
+gem 'dotenv-rails', :groups => [:development, :test]
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
