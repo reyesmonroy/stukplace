@@ -34,7 +34,7 @@ class ReviewsController < ApplicationController
   def destroy
     @review.destroy
     respond_to do |format|
-      format.html { redirect_to place_path(review_params[:place_id]), notice: "Review was deleted successfullt." }
+      format.html { redirect_to place_path(review_params[:place_id]), notice: "Review was deleted successfully." }
     end
   end
 
@@ -45,6 +45,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:content, :place_id)
+    params.require(:review).permit(:content, :place_id, :score)
   end
 end

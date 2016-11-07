@@ -6,20 +6,6 @@
 <p><strong>Phone </strong><%= @place.phone %></p>
 <p><strong>Website </strong><%= @place.website %></p>
 <div id="map" style="width: 230px; height: 230px "></div>
-
-    <script>
-      function initMap() {
-        var uluru = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 15,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
-        });
-      }
-    </script>
 </div>
 <div class="col-md-9">
 <h3>Reviews</h3>
@@ -32,5 +18,30 @@
 <%= render @reviews %>
 </div>
 </div>
-<%= link_to 'Edit', edit_place_path(@place) %> |
-<%= link_to 'Back', places_path %>
+
+<script type="text/javascript">
+function initMap() {
+  var uluru = {lat: <%= @place.latitude %>, lng: <%= @place.longitude %>};
+  var map = new google.maps.Map(document.getElementById('map'), {
+    zoom: 15,
+    center: uluru
+  });
+  var marker = new google.maps.Marker({
+    position: uluru,
+    map: map
+   });
+ }
+ 
+  <% @reviews.each do |review| %>
+    $(".score_<%= review.id%>").raty({
+      starOn: "<%= image_path('star-on.png')%>",
+      starOff: "<%= image_path('star-off.png')%>",
+      score: '<%= review.score %>',
+      readOnly: true
+    });
+  <% end %>
+
+</script>
+
+
+
