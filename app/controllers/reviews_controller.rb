@@ -3,7 +3,7 @@ class ReviewsController < ApplicationController
   before_action :set_review, only: [:edit, :update, :destroy]
 
   def edit
-
+    @place = @review.place
   end
 
 
@@ -22,7 +22,7 @@ class ReviewsController < ApplicationController
 
   def update
     respond_to do |format|  
-      if review.update(review_params)
+      if @review.update(review_params)
         format.html { redirect_to place_path(@review.place), notice: "Review has been successfully updated." }
         format.json { render :show, status: :ok, location: @review }
       else
