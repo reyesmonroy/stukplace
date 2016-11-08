@@ -9,7 +9,12 @@
 <body>
 
 <%= render 'layouts/header' %>
-<div class="container">
+
+<% if current_page?(root_path) %>
+  <div class="landing">
+<% else %>
+  <div class="container">
+<% end %>
 <%= bootstrap_flash %>
 <%= yield %>
 </div>
